@@ -36,8 +36,9 @@ RUN cd /tmp \
  && wget -q http://s3.amazonaws.com/influxdb/influxdb_${INFLUXDB_VERSION}_amd64.deb \
  && dpkg -i influxdb_${INFLUXDB_VERSION}_amd64.deb
 
-RUN mkdir /opt/statsd \
- && wget -qO- https://github.com/etsy/statsd/archive/v${STATSD_VERSION}.tar.gz | tar xvz --strip-components=1 -C /opt/statsd/
+RUN mkdir /opt/statsd && cd /opt/statsd \
+ && wget -qO- https://github.com/etsy/statsd/archive/v${STATSD_VERSION}.tar.gz | tar xvz --strip-components=1 -C . \
+ && wget -q https://raw.githubusercontent.com/bernd/statsd-influxdb-backend/master/lib/influxdb.js
 
 
 RUN cd ${GRAPHITE_ROOT} \
@@ -77,9 +78,6 @@ EXPOSE 8083
 
 # InfluxDB HTTP API
 EXPOSE 8086
-
-# InfluxDB HTTPS API
-EXPOSE 8084
 
 
 # -------- #

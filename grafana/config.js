@@ -15,6 +15,12 @@ function (Settings) {
         type: 'graphite',
         url: "/graphite",
         default: true
+      },
+      influx: {
+        type: 'influxdb',
+        url: "/influxdb/db/statsd",
+        username: 'root',
+        password: 'root'
       }
     },
 

@@ -165,7 +165,7 @@ write-batch-size = 5000000
 
 [wal]
 
-dir   = "/var/lib/influxb/wal"
+dir   = "/var/lib/influxdb/wal"
 flush-after = 1000 # the number of writes after which wal will be flushed, 0 for flushing on every write
 bookmark-after = 1000 # the number of writes after which a bookmark will be created
 
